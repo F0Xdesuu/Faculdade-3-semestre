@@ -1,4 +1,24 @@
+h1{
+    font-size: 45px;
+    font-style: italic;
+    
+}
 h2{
     color:blueviolet;
     font-size: 50px;
+}
+p{
+    background-color: orange;
+    font-size: 60px;
+    font-style: italic;
+    text-align:center;
+    color: black;
+
+}
+body{
+    background-color: black;
+    color: white;
+}
+li{
+    font-size: 35px;
 }
