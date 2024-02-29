@@ -1,0 +1,15 @@
+p{
+color: blue;
+font-size: 55px;
+}
+body{
+    background-color: rgb(255, 0, 234);
+}
+.cor{
+    color: rgb(5, 228, 191);
+}
+#texto{
+    color: aqua;
+    border: 5px solid rgb(8, 238, 226);
+    text-align: center;
+}
