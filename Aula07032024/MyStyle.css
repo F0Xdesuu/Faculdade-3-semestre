@@ -1,0 +1,15 @@
+div{
+    width: 200px; /*altura*/
+    height: 200px; /*comprimento*/
+    background-color: blueviolet;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 30px;
+}
+span{
+    width: 100px;
+    height: 200px;
+    background-color: blueviolet;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
