@@ -1,0 +1,35 @@
+.Fonte {
+    font-family: "Bebas neue", sans-serif;
+    font-style: normal;
+    font-size: 65px;
+  }
+.textodecat{
+  text-align: center;
+  font-size: 65px;
+  font-family: "Bebas neue", sans-serif
+  
+}
+
+.navbar-brand{
+  font-family: "Bebas neue", sans-serif;
+    font-style: normal;
+    font-size: 45px !important;
+}
+
+.card-body {
+  border-bottom: 10px !important;
+}
+
+.carousel-item img {
+  margin: 0 auto;
+  display: block;
+}
+
+.carousel-control-next-icon{
+    background-color: black;
+}
+
+.carousel-control-prev-icon{
+    background-color: black;
+}
+
