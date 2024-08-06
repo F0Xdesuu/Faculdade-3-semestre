@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    width: 100%;
+    height: auto;
+    background-color: aquamarine;    
+}
+
+.container div{
+    width: 180px;
+    height: 180px;
+
+    background-color: blueviolet;
+    border: 5px solid black;
+    border-radius: 15px;
+}
+
