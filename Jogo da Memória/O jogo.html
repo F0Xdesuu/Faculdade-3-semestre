@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Style.css">
+  <title>Jogo da Memória</title>
+  
+</head>
+<body>
+
+  <h1>Jogo da Memória</h1>
+  <div class="grid" id="gameGrid"></div>
+  <div class="win-message" id="winMessage">Parabéns! Você venceu!</div>
+  <button class="restart-btn" id="restartBtn" onclick="restartGame()">Reiniciar</button>
+
+  <script>
+    const symbols = ['🍎', '🍌', '🍓', '🍍', '🍇', '🍒'];
+    let cards = [...symbols, ...symbols]; // Duplicando os símbolos para fazer pares
+    let selectedCards = [];
+    let matchedPairs = 0;
+    const gameGrid = document.getElementById('gameGrid');
+    const winMessage = document.getElementById('winMessage');
+    const restartBtn = document.getElementById('restartBtn');
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function createGameBoard() {
+      gameGrid.innerHTML = '';
+      shuffle(cards);
+      cards.forEach((symbol, index) => {
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card');
+        cardElement.setAttribute('data-symbol', symbol);
+        cardElement.setAttribute('data-index', index);
+        cardElement.addEventListener('click', handleCardClick);
+        gameGrid.appendChild(cardElement);
+      });
+    }
+
+    function handleCardClick(e) {
+      const card = e.target;
+      const symbol = card.getAttribute('data-symbol');
+      const index = card.getAttribute('data-index');
+
+      if (selectedCards.length < 2 && !card.classList.contains('hidden')) {
+        card.innerHTML = symbol;
+        selectedCards.push({ card, symbol, index });
+      }
+
+      if (selectedCards.length === 2) {
+        checkMatch();
+      }
+    }
+
+    function checkMatch() {
+      const [firstCard, secondCard] = selectedCards;
+
+      if (firstCard.symbol === secondCard.symbol && firstCard.index !== secondCard.index) {
+        firstCard.card.classList.add('hidden');
+        secondCard.card.classList.add('hidden');
+        matchedPairs++;
+        checkVictory();
+      } else {
+        setTimeout(() => {
+          firstCard.card.innerHTML = '';
+          secondCard.card.innerHTML = '';
+        }, 1000);
+      }
+
+      selectedCards = [];
+    }
+
+    function checkVictory() {
+      if (matchedPairs === symbols.length) {
+        winMessage.style.display = 'block';
+        restartBtn.style.display = 'block';
+      }
+    }
+
+    function restartGame() {
+      selectedCards = [];
+      matchedPairs = 0;
+      winMessage.style.display = 'none';
+      restartBtn.style.display = 'none';
+      createGameBoard();
+    }
+
+    createGameBoard();
+  </script>
+
+</body>
+</html>

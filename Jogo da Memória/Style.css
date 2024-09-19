@@ -1,0 +1,58 @@
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 10px;
+    }
+
+    .card {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 36px;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .hidden {
+      background-color: #95a5a6;
+      cursor: default;
+    }
+
+    .win-message {
+      display: none;
+      margin-top: 20px;
+      font-size: 24px;
+      color: green;
+    }
+
+    .restart-btn {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #2ecc71;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  
