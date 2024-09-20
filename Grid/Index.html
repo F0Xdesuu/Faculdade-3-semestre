@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid de Colaboradores</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+  <div class="grid-container" id="github-cards"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const users = ['matteuszera', 'DecemberAmaral', 'F0Xdesuu', 'CafehDoce', 'manoloadsc'];
+      const container = document.getElementById('github-cards');
+
+      async function getUserTechs(username) {
+        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos`);
+        const repos = await reposResponse.json();
+        const languages = {};
+        repos.forEach(repo => {
+          if (repo.language) {
+            languages[repo.language] = (languages[repo.language] || 0) + 1;
+          }
+        });
+        const sortedLanguages = Object.keys(languages).sort((a, b) => languages[b] - languages[a]);
+        return sortedLanguages.slice(0, 3).join(', ');
+      }
+
+      for (const user of users) {
+        const response = await fetch(`https://api.github.com/users/${user}`);
+        const data = await response.json();
+        const techs = await getUserTechs(user);
+
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        card.innerHTML = `
+          <img src="${data.avatar_url}" alt="Foto de ${data.login}">
+          <h3>${data.name || data.login}</h3>
+          <p>Principais Tecnologias: ${techs || 'Não disponível'}</p>
+          <a href="${data.html_url}" target="_blank">Ver Perfil</a>
+        `;
+
+        container.appendChild(card);
+      }
+    });
+  </script>
+</body>
+</html>
